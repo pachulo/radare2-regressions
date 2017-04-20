@@ -259,7 +259,6 @@ mov dword [esp + 0x68], 'read'
 "
 run_test
 
-
 NAME='ahi s 2'
 CMDS='wx b868584d56
 e asm.bits=64
@@ -268,4 +267,17 @@ pi 1
 '
 EXPECT="mov eax, 'VMXh'
 "
+run_test
+
+NAME='ahi s 3'
+CMDS='e asm.bits=64
+e asm.arch=x86
+wx 67c744246864616572
+pd 1
+ahi s
+pd 1
+'
+EXPECT='            0x00000000      67c744246864.  mov dword [esp + 0x68], 0x72656164 ; [0x72656164:4]=-1
+            0x00000000      67c744246864.  mov dword [esp + 0x68], 'read' ; [0x72656164:4]=-1
+'
 run_test
